@@ -1,6 +1,6 @@
 import { pool } from "../../config/db";
 
-const createBooking = async (payload: Router<string, unknown>) => {
+const createBooking = async (payload: any) => {
   const { customer_id, vehicle_id, rent_start_date, rent_end_date } = payload;
 
   const vehicle = await pool.query(`SELECT * FROM  vehicles WHERE id=$1`, [

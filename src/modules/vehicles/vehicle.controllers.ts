@@ -1,4 +1,4 @@
-import { Request } from "express";
+import { Request, Response } from "express";
 import { vehicleServices } from "./vehicle.services";
 
 const createVehicle = async (req: Request, res: Response) => {
@@ -9,7 +9,7 @@ const createVehicle = async (req: Request, res: Response) => {
       message: "Vehicle created successfully",
       data: result.rows[0],
     });
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message,
@@ -34,7 +34,7 @@ const getAllVehicles = async (req: Request, res: Response) => {
         data: result.rows,
       });
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message,
@@ -60,7 +60,7 @@ const getSignleVehicle = async (req: Request, res: Response) => {
         data: result.rows[0],
       });
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message,
@@ -88,7 +88,7 @@ const updateVehicle = async (req: Request, res: Response) => {
         data: result.rows[0],
       });
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message,
@@ -112,7 +112,7 @@ const deleteVehicle = async (req: Request, res: Response) => {
         message: "vehicle deleted successfully",
       });
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({
       success: false,
       message: err.message,

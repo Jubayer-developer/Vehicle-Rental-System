@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import config from "../../config";
 import { pool } from "../../config/db";
 
-const registerUser = async (payload: Route<string, unknown>) => {
+const registerUser = async (payload: any) => {
   const { name, email, password, phone, role } = payload;
   if (password.length < 6) {
     throw new Error("Password must be at least 6 characters");
@@ -35,9 +35,9 @@ const loginUser = async (email: string, password: string) => {
     throw new Error("Invalid credentials");
   }
 
-  const token = await jwt.sign(
+  const token = jwt.sign(
     { id: user.id, name: user.name, email: user.email, role: user.role },
-    config.jwt_secret,
+    config.jwt_secret as string,
     {
       expiresIn: "4d",
     }
