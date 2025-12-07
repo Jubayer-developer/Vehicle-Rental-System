@@ -18,7 +18,7 @@ const createBooking = async (payload: any) => {
   const startDate = new Date(rent_start_date);
   const endDate = new Date(rent_end_date);
 
-  const dateDifference = endDate - startDate;
+  const dateDifference = endDate.getTime() - startDate.getTime();
   const days = Math.ceil(dateDifference / (1000 * 60 * 60 * 24));
 
   if (days <= 0) {

@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { bookingServices } from "./bookings.services";
 
 const createBooking = async (req: Request, res: Response) => {
@@ -21,6 +21,7 @@ const createBooking = async (req: Request, res: Response) => {
 const getBookings = async (req: Request, res: Response) => {
   try {
     const result = await bookingServices.getBookings(req.user);
+
     res.status(200).json({
       success: true,
       message:
@@ -29,7 +30,7 @@ const getBookings = async (req: Request, res: Response) => {
           : "Bookings retrived successfully",
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).json({
       success: false,
       message: error.message,
@@ -41,7 +42,7 @@ const getBookings = async (req: Request, res: Response) => {
 const updateBooking = async (req: Request, res: Response) => {
   const id = req.params.bookingId;
   try {
-    const result = await bookingServices.updateBooking(id, req.user);
+    const result = await bookingServices.updateBooking(id as string, req.user);
 
     res.status(200).json({
       success: true,
@@ -51,7 +52,7 @@ const updateBooking = async (req: Request, res: Response) => {
           : "Booking marked as returned. Vehicle is now available",
       data: result,
     });
-  } catch (err) {
+  } catch (err: any) {
     res.status(400).json({
       success: false,
       message: err.message,
