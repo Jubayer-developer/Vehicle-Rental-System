@@ -1,5 +1,5 @@
                                                   Vehicle Rental System
-Livi Link: https://assignment-2-psi-liart.vercel.app/
+Live Link: https://assignment-2-psi-liart.vercel.app/
 
 Features ঃ
 
