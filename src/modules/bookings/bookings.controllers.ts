@@ -25,7 +25,7 @@ const getBookings = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message:
-        req.user === "customer"
+        req.user?.role === "customer"
           ? "Your bookings retrived successfully"
           : "Bookings retrived successfully",
       data: result,
@@ -47,7 +47,7 @@ const updateBooking = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message:
-        req.user === "customer"
+        req.user?.role === "customer"
           ? "Booking cancelled successfully"
           : "Booking marked as returned. Vehicle is now available",
       data: result,
