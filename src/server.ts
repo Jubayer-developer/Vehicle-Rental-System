@@ -1,13 +1,14 @@
-import express, { Request, Response } from "express";
-const app = express();
-const port = config.port;
-
 import config from "./config";
 import initDB from "./config/db";
 import { authRoutes } from "./modules/auth/auth.routes";
 import { bookingRoutes } from "./modules/bookings/bookings.routes";
 import { userRoutes } from "./modules/users/users.routes";
 import { vehicleRoutes } from "./modules/vehicles/vehicle.routes";
+
+import express, { Request, Response } from "express";
+
+const app = express();
+const port = config.port;
 
 app.use(express.json());
 
