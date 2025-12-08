@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 const app = express();
 const port = config.port;
 
@@ -10,6 +10,10 @@ import { userRoutes } from "./modules/users/users.routes";
 import { vehicleRoutes } from "./modules/vehicles/vehicle.routes";
 
 app.use(express.json());
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to Vehicle Rental System");
+});
 
 app.use("/api/v1/auth", authRoutes);
 
